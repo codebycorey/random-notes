@@ -2,4 +2,4 @@
 Collection of notes
 
 #### Index
-[Essentials of JavaScript](./EssentialsOfJavascript.md)
+[Essentials of JavaScript](./EssentialsOfJavaScript.md)
