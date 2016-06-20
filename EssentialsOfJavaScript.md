@@ -1,4 +1,4 @@
-Things to remember about Javascript
+[Back to home](./README.md)
 
 ## Chapter 1 Accustoming Yourself to JavaScript
 #### Item 1: Know Which JavaScript you are using
