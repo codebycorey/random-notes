@@ -45,3 +45,53 @@ Never omit a semicolon before a statement beginning with (, [, +, -, or /.
 * Surrogate pairs throw off string element counts, affecting length, charAt, charCodeAt, and regular expression patterns such as "." .
 * Use third-party libraries for writing code point-aware string manipulation.
 * Whenever you are using a library that works with strings, consult the documentation to see how it handles the full range of code points.
+
+## Chapter 2 Variable Scope
+#### Item 8: Minimize Use of the Global Object
+* Avoid declaring global variables.
+* Declare variables as locally as possible.
+* Avoid adding properties to the global object.
+* Use the global object for platform feature detection.
+
+#### Item 9: Always Declare Local variables
+* Always declare new local variables with var.
+* Consider using lint tools to help check for unbound variables.
+
+#### Item 10: Avoid with
+* Avoid using with statements.
+* Use short variable names for repeated access to an object.
+* Explicitly bind local variables to object properties instead of implicitly binding them with a with statement.
+
+#### Item 11: Get Comfortable with Closures
+* Functions can refer to variables defined in outer scopes.
+* Closures can outlive the function that creates them.
+* Closures internally store references to their outer variables, and can both read and update their stored variables.
+
+#### Item 12: Understand Variable Hoisting
+* Variable declarations within a block are implicitly hoisted to the top of their enclosing function.
+* Redeclaration of a variable are treated as a single variable.
+* Consider manually hoisting local variable declarations to avoid confusion.
+
+#### Item 13: Use Immediately Invoked Function Expressions to Create Local scopes
+* Understand the difference between binding and assignment.
+* Closures capture their outer variables by reference, not by value.
+* Use Immediately invoked function expressions (IIFEs) to create local scopes.
+* Be aware of the cases where wrapping a block in an IIFE can change its behavior.
+
+#### Item 14: Beware of Unportable Scoping of Named Function expressions
+* Use named function expressions to improve stack traces in Error objects and debuggers.
+* Beware of pollution of function expression scope with Object.prototype in ES3 and buggy JavaScript environments.
+* Consider avoiding named function expressions or removing them before shipping.
+* If you are shipping in properly implement ES5 environments, you've got nothing to worry about.
+
+#### Item 15: Beware of Unportable Scoping of Block-Local Function Declarations
+* Alway keep function declarations at the outmost level of a program or a containing function to avoid unportable behavior.
+* Use var declarations with conditional assignment instead of conditional function declarations.
+
+#### Item 16: Avoid Creating Local Variables with eval
+* Avoid creating variables with eval that pollute the caller's scope.
+* If eval code might create global variables, wrap the call in a nested function to prevent scope.
+
+#### Item 17: Prefer Indirect eval to Direct eval
+* Wrap eval in a sequence expression with a useless litersl to for the use of indirect eval.
+* Prefer indirect eval to direct eval whenever possible.
