@@ -95,3 +95,29 @@ Never omit a semicolon before a statement beginning with (, [, +, -, or /.
 #### Item 17: Prefer Indirect eval to Direct eval
 * Wrap eval in a sequence expression with a useless litersl to for the use of indirect eval.
 * Prefer indirect eval to direct eval whenever possible.
+
+## Chapter 3 Working with Functions
+#### Item 18: Understand the Difference between Function, Method, and Constructor Calls
+* Method calls provide the object in which the method property is looked up as their receiver.
+* Function calls provide the global object (or undefined for strict functions) as their receiver. Calling methods with function call syntax is rarely useful.
+* Constructors are called with new and receive a fresh object as their receiver.
+
+#### Item 19: Get Comfortable Using Higher-Order Functions
+* Higher-order functions are functions that take other functions as arguments or return functions as their result.
+* Familiarize yourself with higher-order functions in existing libraries.
+* Learn to detect common coding patterns that can be replace by higher-order functions.
+
+#### Item 20: Use call to Call Methods with a Custom receiver
+* Use the call method to call a function with a custom receiver.
+* Use the call method for calling methods that may not exist on a given object.
+* Use the call method for defining higher-order functions that allow clients to provide a receiver for the callback.
+
+#### Item 21: Use apply to Call Functions with Different Numbers of Arguments
+* Use the apply method to call variadic functions with a computed array of arguments.
+* Use the first argument of apply to provide a receiver for variadic methods.
+
+#### Item 22: Use arguments to Create Variadic Functions
+* Use the implicit arguments object to implement variable-arity functions.
+* Consider providing additional fixed-arity versions of the variadic functions you provide so that your consumers don't need to use the apply method.
+
+#### Item 23: Never Modify the arguments object
