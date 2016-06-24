@@ -121,3 +121,18 @@ Never omit a semicolon before a statement beginning with (, [, +, -, or /.
 * Consider providing additional fixed-arity versions of the variadic functions you provide so that your consumers don't need to use the apply method.
 
 #### Item 23: Never Modify the arguments object
+* Never modify the arguments object.
+* Copy the arguments object to a real array using `[].slice.call(arguments)` before modifying it.
+
+#### Item 24: Use a Variable to Save a Reference to arguments
+* Be aware of the function nesting level when referring to `arguments`.
+* Bind an explicitly scoped reference to arguments in order to refer to it from nested functions.
+
+#### Item 25: Use bind to Extract Methods with a Fixed receiver
+* Beware that extracting a method does not bind the method's receiver to its object.
+* When passing an object's method to a higher-order function, use an anonymous function to call the method on the appropriate receiver.
+* Use `bind` as a shorthand for creating a function bound to the appropriate receiver.
+
+#### Item 26: Use bind to Curry Functions
+* Use `bind` to curry a function, that is, to create a delegating function with a fixed subset of the required arguments.
+* Pass `null` or `undefined` as the receiver argument to curry a function that ignores its receiver.
