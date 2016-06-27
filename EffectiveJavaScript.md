@@ -149,10 +149,26 @@ Never omit a semicolon before a statement beginning with `(`, `[`, `+`, `-`, or 
 
 #### Item 29: Avoid Nonstandard Stack Inspection Properties
 * Avoid the nonstandard `anguments.caller` adn `arguments.callee` because they are not reliably portable.
-* Avoid the nonstandard `caller` property of functions, because it does not reliably contain complete infomration about the stack.
+* Avoid the nonstandard `caller` property of functions, because it does not reliably contain complete information about the stack.
 
+## Chapter 4 Objects and Prototypes
+#### Item 30: Understand the Difference between prototype, getPrototypeOf, and __proto__
+* `C.prototype` determines the prototype of objects created by `new C()`.
+* `Object.getPrototypeOf(obj)` is the standard ES5 function for retrieving the prototype of an object.
+* `obj.__proto__` is a nonstandard mechanism for retrieving the prototype of an object.
+* A class is a design pattern consisting of a constructor function and an associated prototype.
 
+#### Item 31: Prefer Object.getPrototypeOf to __proto__
+* Prefer the standards-compliant `Object.getPrototypeOf` to the nonstandard `__proto__` property.
+* Implement `Object.getPrototypeOf` in non-ES5 environments that support `__proto__`.
 
+#### Item 32: Never Modify __proto__
+* Never modifiy an object's `__proto__` property.
+* Use `Object.create` to provide a custom prototype for new objects.
+
+#### Item 33: Make Your Constructors new-Agnostic
+* Make a constructor agnostic to its caller's syntax by reinvoking itself with `new` or with `Object.create`.
+* Document clearly when a function expects to be called with `new`.
 
 
 ## Source
