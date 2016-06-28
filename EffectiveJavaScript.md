@@ -170,6 +170,33 @@ Never omit a semicolon before a statement beginning with `(`, `[`, `+`, `-`, or 
 * Make a constructor agnostic to its caller's syntax by reinvoking itself with `new` or with `Object.create`.
 * Document clearly when a function expects to be called with `new`.
 
+#### Item 34: Store Methods on Prototypes
+* Storing methods on instance objects creates multiple copies of the functions, one per instance object.
+* Prefer storing methods on prototypes over storing them on instance objects.
+
+#### Item 35: Use Closures to Store Private Data
+* Closure variables are private, accessible only to local references.
+* Use local variables as private data to enforce information hiding within methods.
+
+#### Item 36: Store Instance State Only on Instant Objects
+* Mutable data can be problematic when shared, and prototypes are shared between all their instances.
+* Store mutable per-instance state on instance objects.
+
+#### Item 37: Recognize the Implicit Binding of this
+* The scope of `this` is always determined by its nearest enclosing function.
+* Use a local variable, usually called `self`, `me`, or `that`, to make a `this`-binding available to inner functions.
+
+#### Item 38: Call Superclass Constructors from Subclass Constructors
+* Call the superclass constructor explicitly from subclass constructors, passing `this` as the explicit receiver.
+* Use `Object.create` to construct the subclass prototype object to avoid calling the superclass constructor.
+
+#### Item 39: Never Reuse Superclass Property Names
+* Be aware of all property names used by your superclasses.
+* Never reuse a superclass property name in a subclass.
+
+#### Item 40: Avoid Inheriting from Standard Classes
+* Inheriting from standard classes tends to break due to special internal properties such as `[[Class]]`.
+* Prefer delegating to properties instead of inheriting from standard classes.
 
 ## Source
 Book: Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript  
