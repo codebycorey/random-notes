@@ -198,6 +198,34 @@ Never omit a semicolon before a statement beginning with `(`, `[`, `+`, `-`, or 
 * Inheriting from standard classes tends to break due to special internal properties such as `[[Class]]`.
 * Prefer delegating to properties instead of inheriting from standard classes.
 
+#### Item 41: Treat Prototypes As an Implementation Detail
+* Objects are interfaces; prototypes are implementations.
+* Avoid inspecting the prototype structure of objects you don't control.
+* Avoid inspecting properties that implement the internals of objects you don't control.
+
+#### Item 42: Avoid Reckless Monkey-Patching
+* Avoid reckless monkey-patching.
+* Document any monkey-patching performed by a library.
+* Consider making monkey-patching optional by performing the modifications in an exported function.
+* Use monkey-patching to provide polyfills for missing standard APIs.
+
+## Chapter 5 Arrays and Dictionaries
+#### Item 43: Build Lightweight Dictionaries from Direct Instances of Object
+* Use object literals to construct lightweight dictionaries.
+* Lightweight dictionaries should be direct descendants of Object.prototype to protect against prototype pollution in `for...in` loops.
+
+#### Item 44: Use null Prototypes to Precent Prototype Pollution
+* In ES5, use `Object.create(null)` to create prototype-free empty objects that are less susceptible to pollution.
+* In older environments, consider using `{ __proto__: null }`.
+* But beware that `__proto__` is nether standard nor entirely portable and may be removed in future JavaScript environments.
+* Never use the name `__proto__` as a dictionary key since some environments treat this property specially.
+
+#### Item 45: Use hasOwnProperty to Protect Against Prototype Pollution
+* use `hasOwnProperty` to protect against prototype pollution.
+* Use lexical scope and `call` to protect against overriding of the `hasOwnProperty` method.
+* Consider implementing dictionary operations in a class that encapsulates the boilerplate `hasOwnProperty` tests.
+* Use a dictionary class to protect against the use of `"__proto__"` as a key.
+
 ## Source
 Book: Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript  
 Author: David Herman  
