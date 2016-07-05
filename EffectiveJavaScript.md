@@ -226,6 +226,99 @@ Never omit a semicolon before a statement beginning with `(`, `[`, `+`, `-`, or 
 * Consider implementing dictionary operations in a class that encapsulates the boilerplate `hasOwnProperty` tests.
 * Use a dictionary class to protect against the use of `"__proto__"` as a key.
 
+#### Item 46: Prefer Arrays to Dictionaries for Ordered Collections
+* Avoid replying on the order in which `for...in` loops enumerate object properties.
+* If you aggregate data in a dictionary, make sure the aggregate operations are order-insensitive.
+* Use arrays instead of dictionary objects for ordered collections.
+
+#### Item 47: Never Add Enumerable Properties to Object.prototype
+* Avoid adding properties to `Object.prototype`.
+* Consider writing a function instead of an `Object.prototype` method.
+* If you do add properties to `Object.prototype`, use ES5's `Object.defineProperty` to define them as non-enumerable properties.
+
+#### Item 48: Avoid Modifying an Object during Enumeration
+* Make sure not to modify an object while enumerating its properties with a `for...in` loop.
+* Use a `while` loop or classic `for` loop instead of a `for..in` loop when iterating over an object whose contents might change during the loop.
+* For predictable enumeration over a changing data structure, consider using a sequential data structure such as an array instead of a dictionary object.
+
+#### Item 49: Prefer for Loops to for...in Loops for Array Iteration
+* Always use a `for` loop rather than a `for..in` loop for iterating over the indexed properties of an array.
+* Consider storing the `length` property of an array in a local variable before a loop to avoid recomputing the property lookup.
+
+#### Item 50: Prefer Iteration Methods to Loops
+* Use `iteration` methods such as `Array.prototype.forEach` and `Array.prototype.map` in place of `for` loops to make code more readable and avoid duplicating loop control logic.
+* Use custom iteration functions to abstract common loop paterns that are not provided by the standard library.
+* Traditional loops can still be appropriate in cases where early exit is necessary; alternatively, the `some` and `every` methods can be used for early exit.
+
+#### Item 51: Reuse Generic Array Methods on Array-Like Objects
+* Reuse generic `Array` methods on array-like objects by extracting method objects and using their `call` method.
+* Any object can be used with generic `Array` methods if it has indexed properties and an appropriate `length` property.
+
+#### Item 52: Prefer Array Literals to the Array Constructor
+* The `Array` constructor behaves differently if its first argument is a number.
+* Use array literals instead of the `Array` constructor.
+
+## Chapter 6 Library and API Design
+#### Item 53: Maintain Consistent Conventions
+* Use consistent conventions for variable names and function signatures.
+* Don't deviate from conventions your users are likely to encounter in other parts of their development platform.
+
+#### Item 54: Treat undefined As "No Value"
+* Avoid using `undefined` to represent anything other than the absence of a specific value.
+* Use descriptive string values or objects with named boolean properties, rather than `undefined` or `null`, to represent application-specific flags.
+* Test for `undefined` instead of checking `arguments.length` to provided parameter default values.
+* Never use truthiness tests for parameter default values that should allow `0`, `NaN`, or the empty string as valid arguments.
+
+#### Item 55: Accept Options Objects for Keyword Arguments
+* Use options object to make APIs more readable and memorable.
+* The arguments provide by an options object should all be treated as optional.
+* Use an `extend` utility function to abstract out the logic of extracting values from options objects.
+
+#### Item 56: Avoid Unnecessary State
+* Prefer stateless APIs where possible.
+* When providing stateful APIs, document the relevant state that each operation depends on.
+
+#### Item 57: Use Structural Typing for Flexible Interfaces
+* Use structural typing (also known as duck typing) for flexible object interfaces.
+* Avoid inheritance when structural interfaces are more flexible and lightweight.
+* Use mock objects, that is, alternative implementations of interfaces that provide repeatable behavior, for unit testing.
+
+#### Item 58: Distinguish between Array and Array-Like
+* Never overload structural types with other overlapping types.
+* When overloading a structural type with other types, test for the other types first.
+* Accept true arrays instead of array-like objects when overloading with other object types.
+* Document whether your API accepts true arrays or array-like values.
+* Use ES5's `Array.isArray` to test for true arrays.
+
+#### Item 59: Avoid Excessive Coercion
+* Avoid mixing coercion with overloading.
+* Consider defensively guarding against unexpected inputs.
+
+#### Item 60: Support Method Chaining
+* Use method chaining to combine stateless operations.
+* Support method chaining by designing stateless methods that produce new objects.
+* Support method chaining in stateful methods by returning `this`.
+
+## Chapter 7 Concurrency
+#### Item 61: Don't Block the Event Queue on I/O
+* Asynchronous APIs tale callbacks to defer processing of expensive operations and avoid blocking the main application.
+* JavaScript accepts events concurrently but processes event handlers sequentially using an event queue.
+* Never use blocking I/O in an application's event queue.
+
+#### Item 62: Use Nested or Named Callbacks for Asynchronous Sequencing
+* Use nested or named callbacks to perform several asynchronous operations in sequence.
+* Try to strike a balance between excessive nesting of callbacks and awkward naming of non-nested callbacks.
+* Avoid sequencing operations that can be performed concurrently.
+
+#### Item 63: Be Aware of Dropped Errors
+* Avoid copying and pasting error-handling code by writing shared error-handling functions.
+* Make sure to handle all error conditions explicitly to avoid dropped errors.
+
+#### Item 64: Use Recursion for Asynchronous Loops
+* Loops cannot be asynchronous
+* Use recursive functions to perform iterations in separate turns of the event loop.
+* Recursion performed in separate turns of the event loop does not overflow the call stack.
+
 ## Source
 Book: Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript  
 Author: David Herman  
