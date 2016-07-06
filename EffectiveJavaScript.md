@@ -319,6 +319,29 @@ Never omit a semicolon before a statement beginning with `(`, `[`, `+`, `-`, or 
 * Use recursive functions to perform iterations in separate turns of the event loop.
 * Recursion performed in separate turns of the event loop does not overflow the call stack.
 
+#### Item 65: Don't Block the Event Queue on Computation
+* Avoid expensive algorithms in the main event queue.
+* On platforms that support it, the `Worker` API can be used for running long computations in a separate event queue.
+* When the `Worker` API is not available or is too costly, consider breaking up computations across multiple turns of the event loop.
+
+#### Item 66: Use a Counter to Perform Concurrent Operations
+* Events in a JavaScript application occur nondeterministically, that is, in unpredictable order.
+* Use a counter to avoid data races in concurrent operations.
+
+#### Item 67: Never Call Asynchronous Callbacks Synchronously
+* Never call an asynchronous callback synchronously, even if the data is immediately available.
+* Calling an asynchronous callback synchronously disrupts the expected sequence of operations and can lead to unexpected interleaving of code.
+* Calling an asynchronous callback synchronously can lead to stack overflows or mishandled exceptions.
+* Use an asynchronous API such as setTimeout to schedule an asynchronous callback to run in another turn.
+
+#### Item 68: Use Promises for Cleaner Asynchronous Logic
+* Promises represent eventual values, that is, concurrent computations that eventually produce a result.
+* Use promises to compose different concurrent operations.
+* Use promise APIs to avoid data races.
+* Use `select` (also known as `choose`) for situations where an intentional race condition is required.
+
+
+
 ## Source
 Book: Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript  
 Author: David Herman  
