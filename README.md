@@ -2,5 +2,5 @@
 Collection of notes
 
 #### Index
-[Effective JavaScript](./EffectiveJavaScript.md)
-[Challenging Questions](./challenges/questions.md)
+[Effective JavaScript](./EffectiveJavaScript.md)  
+[Challenging Questions](./challenges/questions.md)  
