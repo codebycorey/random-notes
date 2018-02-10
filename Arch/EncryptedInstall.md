@@ -94,4 +94,4 @@ vim /boot/loader/entries/arch.conf
 > options cryptdevice=UUID=######:cryptvol root=/dev/mapper/cryptvol-root quiet rw
 # to get UUID in vim using command `:read ! blkid /dev/sda2`
 ```
-Now reboot and hope I copied everything into the doc correctly no no missed steps. `todo verify` 
+Now reboot and hope I copied everything into the doc correctly and have no missed steps. `todo verify` 
