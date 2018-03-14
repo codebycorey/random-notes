@@ -1,5 +1,5 @@
 # Notes
-Collection of notes
+Collection of notes.
 
 ## Index
 [Effective JavaScript](./EffectiveJavaScript.md)  
