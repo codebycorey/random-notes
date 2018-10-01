@@ -16,6 +16,9 @@ aka _Gold Dust Dracaena_ or _Florida Beauty_
 ### Ficus Elastica
 aka _Rubber Tree_
 
+### Ficus Lyrata
+aka _Fiddle-leaf Fig_
+
 ### Schefflera
 aka _Umbrella Tree_
 
